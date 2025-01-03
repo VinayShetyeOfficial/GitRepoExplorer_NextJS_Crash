@@ -2,7 +2,19 @@ import Link from "next/link";
 import { FaStar, FaCodeBranch, FaEye } from "react-icons/fa";
 
 async function fetchRepos() {
-  const response = await fetch("https://api.github.com/users/bradtraversy/repos");
+  const token = "" // Replace with your token
+  const response = await fetch(
+    "https://api.github.com/users/bradtraversy/repos",
+    {
+      headers: {
+        Authorization: `token ${token}`,
+      },
+
+      next: {
+        revalidate: 60, // Re-fetches the repos every 60 seconds to ensure the list is up-to-date, as new repos are frequently created.
+      },
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch repos");
@@ -29,6 +41,7 @@ const ReposPage = async () => {
       <ul className="repo-list">
         {repos.map((repo) => {
           return (
+            // Added return statement here
             <li key={repo.id}>
               <Link href={`/code/repos/${repo.name}`}>
                 <h3>{repo.name}</h3>
