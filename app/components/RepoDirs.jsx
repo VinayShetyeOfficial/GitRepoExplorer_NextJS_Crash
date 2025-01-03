@@ -7,10 +7,6 @@ async function fetchRepoContents(name) {
   const response = await fetch(
     `https://api.github.com/repos/bradtraversy/${name}/contents`,
     {
-      headers: {
-        Authorization: `token ${token}`,
-      },
-
       next: {
         revalidate: 60, // Re-fetches the repos every 60 seconds to ensure the list is up-to-date, as new repos are frequently created.
       },
