@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+// Fetch Courses functionality added to main page
 // async function fetchCourses() {
 //   const response = await fetch("http://localhost:3000/api/courses");
 
