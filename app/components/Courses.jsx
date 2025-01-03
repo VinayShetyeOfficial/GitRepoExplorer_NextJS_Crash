@@ -8,6 +8,7 @@ import Link from "next/link";
 // }
 
 const Courses = ({ courses }) => {
+  // Fetch Courses functionality added to main page
   // const courses = await fetchCourses();
   // console.log(courses);
   return (
